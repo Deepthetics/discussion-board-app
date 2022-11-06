@@ -1,1 +1,33 @@
-# discussion-board-app
+# Vaatimusmäärittely
+
+## Sovelluksen tarkoitus
+
+Sovelluksen on tarkoitus toimia keskustelualustana, missä käyttäjät voivat käydä keskustelua eri aiheista. Aiheet muodostavat omat keskustelualueensa, jotka sisältävät aiheeseen liittyviä käyttäjien luomia viestiketjuja.
+
+## Käyttäjät
+
+Sovelluksella on kahdenlaisia käyttäjiä:
+- peruskäyttäjä
+- ylläpitäjä
+
+## Sovelluksen keskeiset toiminnot
+
+- käyttäjä voi luoda uuden tunnuksen ja kirjautua sisään olemassaolevalla tunnuksella
+- käyttäjä voi kirjautua ulos
+- käyttäjä näkee sovelluksen etusivulla olemassaolevat keskustelualueet
+- käyttäjä näkee keskustelualueen sivulla keskustelualueen viestiketjut
+- käyttäjä näkee viestiketjun sivulla siihen kirjoitetut viestit sekä viestien tiedot (kirjoittaja/ajankohta/tykkäykset) 
+- käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin
+- käyttäjä voi kirjoittaa viestejä jo olemassaoleviin viestiketjuihin
+- käyttäjä voi tykätä muiden käyttäjien viesteistä (tykkäykset näkyvät viestien yhteydessä)
+- käyttäjä voi muokata luomansa viestiketjun otsikkoa ja kirjoittamansa viestin sisältöä
+- käyttäjä voi poistaa luomansa viestiketjun tai kirjoittamansa viestin
+- ylläpitäjä voi luoda ja poistaa keskustelualueita
+
+## Sovelluksen jatkokehitysideat
+
+Tässä lueteltuja toimintoja toteutetaan ajan salliessa, kun keskeiset toiminnot on toteutettu.
+
+- käyttäjä näkee keskustelualueen yhteydessä viimeksi aktiivisen viestiketjun sekä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
+- käyttäjä näkee viestiketjun yhteydessä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
+- käyttäjä voi lähettää yksityisviestejä muille käyttäjille
