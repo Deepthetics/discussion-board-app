@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<h2>Login</h2>
+<form action="/login" method="POST">
+Username: <br><input type="text" name="username">
+<p>
+Password: <br><input type="password" name="password">
+<p>
+<input type="submit" value="Login">
+</form>
+If you do not have an account, you can register <a href="/register">here</a>.
+<p>
+<a href="/">Back to front page</a>
+{% endblock %}
