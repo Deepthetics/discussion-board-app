@@ -15,14 +15,20 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä voi luoda uuden tunnuksen #DONE
 - käyttäjä voi kirjautua sisään olemassaolevalla tunnuksella #DONE
 - käyttäjä voi kirjautua ulos #DONE
-- käyttäjä näkee sovelluksen etusivulla olemassaolevat keskustelualueet sekä keskustelualueiden sisältämien viestiketjujen ja viestien lukumäärät
-- käyttäjä näkee keskustelualueen sivulla keskustelualueen viestiketjut sekä viestiketjujen sisältämien viestin lukumäärät
-- käyttäjä näkee viestiketjun sivulla siihen kirjoitetut viestit sekä viestien tiedot (kirjoittaja/ajankohta/tykkäykset)
+- käyttäjä näkee sovelluksen etusivulla olemassaolevat keskustelualueet #DONE
+- käyttäjä näkee keskustelualueiden sisältämien viestiketjujen ja viestien lukumäärät
+- käyttäjä näkee keskustelualueen sivulla keskustelualueen viestiketjut
+- käyttäjä näkee viestiketjujen sisältämien viestin lukumäärät
+- käyttäjä näkee viestiketjun sivulla siihen kirjoitetut viestit 
+- käyttäjä näkee viestien yhteydessä niihin liittyvät tiedot (kirjoittaja/ajankohta/tykkäykset)
 - käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin
 - käyttäjä voi kirjoittaa viestejä jo olemassaoleviin viestiketjuihin
-- käyttäjä voi muokata luomansa viestiketjun otsikkoa ja kirjoittamansa viestin sisältöä
-- käyttäjä voi poistaa luomansa viestiketjun tai kirjoittamansa viestin
-- ylläpitäjä voi luoda ja poistaa keskustelualueita
+- käyttäjä voi muokata luomansa viestiketjun otsikkoa
+- käyttäjä voi muokata kirjoittamansa viestin sisältöä
+- käyttäjä voi poistaa luomansa viestiketjun
+- käyttäjä voi poistaa kirjoittamansa viestin
+- ylläpitäjä voi luoda keskustelualueita
+- ylläpitäjä voi poistaa keskustelualueita
 
 ## Sovelluksen jatkokehitysideat
 
@@ -30,5 +36,5 @@ Tässä lueteltuja toimintoja toteutetaan ajan salliessa, kun keskeiset toiminno
 
 - käyttäjä näkee keskustelualueen yhteydessä viimeksi aktiivisen viestiketjun sekä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
 - käyttäjä näkee viestiketjun yhteydessä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
-- käyttäjä voi tykätä muiden käyttäjien viesteistä (tykkäykset näkyvät viestien yhteydessä)
+- käyttäjä voi tykätä muiden käyttäjien viesteistä
 - käyttäjä voi lähettää yksityisviestejä muille käyttäjille
