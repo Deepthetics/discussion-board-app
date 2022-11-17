@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}Front page{% endblock %}
 {% block content %}
-<a href="/login">Login</a>
+{% if session.user_id %}
+You are logged in as {{ session.username }}.
+<p>
+<a href="/logout">Logout</a>
+{% else %}
+You are not logged in. You can login <a href="/login">here</a>.
+{% endif %}
 {% endblock %}

@@ -2,12 +2,18 @@
 {% block title %}Register{% endblock %}
 {% block content %}
 <h2>Register</h2>
-<form action="/login" method="POST">
+<form action="/register" method="POST">
 Username: <br><input type="text" name="username">
 <p>
 Password: <br><input type="password" name="password1">
 <p>
 Confirm password: <br><input type="password" name="password2">
+<p>
+Käyttäjärooli:
+<select name="role">
+<option value=1> peruskäyttäjä
+<option value=2> ylläpitäjä
+</select>
 <p>
 <input type="submit" value="Register">
 </form>
