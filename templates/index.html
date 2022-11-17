@@ -8,4 +8,10 @@ You are logged in as {{ session.username }}.
 {% else %}
 You are not logged in. You can login <a href="/login">here</a>.
 {% endif %}
+<hr>
+<h2>Topics</h2>
+{% for topic in topics %}
+{{ topic.title }}
+<hr>
+{% endfor %}
 {% endblock %}

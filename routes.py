@@ -1,10 +1,11 @@
 from app import app
-from flask import redirect, render_template, request, session
+from flask import redirect, render_template, request
+import topics
 import users
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", topics=topics.get_all())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
