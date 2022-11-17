@@ -20,6 +20,11 @@ def login():
             return render_template("error.html", message="Incorrect username or password.")
         return redirect("/")
 
+@app.route("/logout")
+def logout():
+    users.logout()
+    return redirect("/")
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "GET":
@@ -49,7 +54,12 @@ def register():
             return render_template("error.html", message="Registration failed.")
         return redirect("/")
 
-@app.route("/logout")
-def logout():
-    users.logout()
+@app.route("/add_topic", methods=["POST"])
+def add_topic():
+    title = request.form["title"]
+
+    if len(title) < 1 or len(title) > 40:
+        render_template("error.html", message="Topic title must be between 1-40 characters long.")
+    
+    topics.add_topic(title)
     return redirect("/")

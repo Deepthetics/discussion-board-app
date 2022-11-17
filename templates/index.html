@@ -14,4 +14,12 @@ You are not logged in. You can login <a href="/login">here</a>.
 {{ topic.title }}
 <hr>
 {% endfor %}
+{% if session.role == 2 %}
+<h3>Add new topic</h3>
+<form action="/add_topic" method="POST">
+Title: <br><input type="text" name="title">
+<p>
+<input type="submit" value="Add new">
+</form>
+{% endif %}
 {% endblock %}
