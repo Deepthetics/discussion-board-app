@@ -27,8 +27,8 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä voi muokata kirjoittamansa viestin sisältöä
 - käyttäjä voi poistaa luomansa viestiketjun
 - käyttäjä voi poistaa kirjoittamansa viestin
-- ylläpitäjä voi luoda keskustelualueita
-- ylläpitäjä voi poistaa keskustelualueita #DONE
+- ylläpitäjä voi luoda keskustelualueita #DONE
+- ylläpitäjä voi poistaa keskustelualueita
 
 ## Sovelluksen jatkokehitysideat
 
