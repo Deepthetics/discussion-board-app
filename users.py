@@ -9,10 +9,10 @@ def login(username, password):
 
     if not user:
         return False
-    
+
     if not check_password_hash(user[2], password):
         return False
-    
+
     session["user_id"] = user[0]
     session["username"] = user[1]
     session["role"] = user[3]

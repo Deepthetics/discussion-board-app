@@ -59,7 +59,19 @@ def add_topic():
     title = request.form["title"]
 
     if len(title) < 1 or len(title) > 40:
-        render_template("error.html", message="Topic title must be between 1-40 characters long.")
-    
-    topics.add_topic(title)
+        return render_template("error.html", message="Topic title must be between 1-40 characters long.")
+
+    if not topics.add_topic(title):
+        return render_template("error.html", message="Operation failed.")
+    return redirect("/")
+
+@app.route("/remove_topic", methods=["POST"])
+def remove_topic():
+    title = request.form["title"]
+
+    if not topics.get_topic(title):
+        return render_template("error.html", message="Topic with a given title not found. Check the topic title.")
+
+    if not topics.remove_topic(title):
+        return render_template("error.html", message="Operation failed.")
     return redirect("/")

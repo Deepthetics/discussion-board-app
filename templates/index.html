@@ -15,11 +15,19 @@ You are not logged in. You can login <a href="/login">here</a>.
 <hr>
 {% endfor %}
 {% if session.role == 2 %}
+<br>
+<h2>Admin tools</h2>
 <h3>Add new topic</h3>
 <form action="/add_topic" method="POST">
 Title: <br><input type="text" name="title">
 <p>
 <input type="submit" value="Add new">
+</form>
+<h3>Remove topic</h3>
+<form action="/remove_topic" method="POST">
+Title: <br><input type="text" name="title">
+<p>
+<input type="submit" value="Remove">
 </form>
 {% endif %}
 {% endblock %}

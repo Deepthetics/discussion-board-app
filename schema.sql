@@ -7,7 +7,7 @@ CREATE TABLE users (
 
 CREATE TABLE topics (
     id SERIAL PRIMARY KEY, 
-    title TEXT
+    title TEXT UNIQUE
 );
 
 CREATE TABLE threads (
