@@ -17,8 +17,8 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä voi kirjautua ulos #DONE
 - käyttäjä näkee sovelluksen etusivulla olemassaolevat keskustelualueet #DONE
 - käyttäjä näkee keskustelualueiden sisältämien viestiketjujen ja viestien lukumäärät
-- käyttäjä näkee keskustelualueen sivulla keskustelualueen viestiketjut
-- käyttäjä näkee viestiketjujen sisältämien viestin lukumäärät
+- käyttäjä näkee keskustelualueen sivulla keskustelualueen viestiketjut #DONE
+- käyttäjä näkee viestiketjujen sisältämien viestien lukumäärät
 - käyttäjä näkee viestiketjun sivulla siihen kirjoitetut viestit 
 - käyttäjä näkee viestien yhteydessä niihin liittyvät tiedot (kirjoittaja/ajankohta/tykkäykset)
 - käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin
