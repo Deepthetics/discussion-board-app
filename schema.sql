@@ -14,12 +14,14 @@ CREATE TABLE threads (
     id SERIAL PRIMARY KEY, 
     title TEXT, 
     created_at TIMESTAMP, 
-    user_id INTEGER REFERENCES
+    user_id INTEGER REFERENCES users, 
+    topic_id INTEGER REFERENCES topics
 );
 
 CREATE TABLE messages (
     id SERIAL PRIMARY KEY, 
     title TEXT, 
     created_at TIMESTAMP, 
-    user_id INTEGER REFERENCES
+    user_id INTEGER REFERENCES users, 
+    thread_id INTEGER REFERENCES topics
 );
