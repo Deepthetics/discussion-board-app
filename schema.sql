@@ -20,8 +20,8 @@ CREATE TABLE threads (
 
 CREATE TABLE messages (
     id SERIAL PRIMARY KEY, 
-    title TEXT, 
+    content TEXT, 
     created_at TIMESTAMP, 
     user_id INTEGER REFERENCES users, 
-    thread_id INTEGER REFERENCES topics
+    thread_id INTEGER REFERENCES threads
 );
