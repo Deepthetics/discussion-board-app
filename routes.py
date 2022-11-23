@@ -75,3 +75,9 @@ def remove_topic():
     if not topics.remove_topic(title):
         return render_template("error.html", message="Operation failed.")
     return redirect("/")
+
+@app.route("/topic/<int:topic_id>")
+def topic(topic_id):
+    threads = topics.get_threads(topic_id)
+    return render_template("topic.html", threads=threads)
+    
