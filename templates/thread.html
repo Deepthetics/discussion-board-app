@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}Thread{% endblock %}
+{% block content %}
+<h2>Messages</h2>
+{% for message in messages %}
+Content: {{ message.content }}
+<br>
+Created at: {{ message.created_at }}
+<br>
+Created by: {{ message.username }}
+<hr>
+{% endfor %}
+{% endblock %}
