@@ -80,4 +80,8 @@ def remove_topic():
 def topic(topic_id):
     threads = topics.get_threads(topic_id)
     return render_template("topic.html", threads=threads)
-    
+
+@app.route("/thread/<int:thread_id>")
+def thread(thread_id):
+    messages = topics.get_messages(thread_id)
+    return render_template("thread.html", messages=messages)

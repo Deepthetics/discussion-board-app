@@ -35,8 +35,15 @@ def remove_topic(title):
     return True
 
 def get_threads(topic_id):
-    sql = """SELECT threads.id, threads.title, threads.created_at, users.username FROM threads, users 
+    sql = """SELECT threads.id, threads.title, threads.created_at, users.username FROM threads, users
              WHERE threads.user_id=users.id AND threads.topic_id=:topic_id ORDER BY threads.id;"""
     result = db.session.execute(sql, {"topic_id":topic_id})
     threads = result.fetchall()
     return threads
+
+def get_messages(thread_id):
+    sql = """SELECT messages.id, messages.content, messages.created_at, users.username FROM messages, users
+             WHERE messages.user_id=users.id AND messages.thread_id=:thread_id ORDER BY messages.id;"""
+    result = db.session.execute(sql, {"thread_id":thread_id})
+    messages = result.fetchall()
+    return messages
