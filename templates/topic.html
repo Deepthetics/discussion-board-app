@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block title %}Topic{% endblock %}
 {% block content %}
+<a href="/create_thread">Add new thread</a>
+<hr>
 <h2>Threads</h2>
 {% for thread in threads %}
 <a href="/thread/{{ thread.id }}">{{ thread.title }}</a>

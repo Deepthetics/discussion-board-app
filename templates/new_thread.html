@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Create new thread{% endblock %}
+{% block content %}
+<h2>Create new thread</h2>
+<form action="/create_thread" method="POST">
+Title: <br><input type="text" name="title">
+<p>
+Message: <br><textarea name="message_content" rows="10", cols="50"></textarea>
+<p>
+<input type="submit" value="Create new">
+</form>
+{% endblock %}
