@@ -21,7 +21,7 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä näkee viestiketjujen sisältämien viestien lukumäärät
 - käyttäjä näkee viestiketjun sivulla siihen kirjoitetut viestit #DONE
 - käyttäjä näkee viestien yhteydessä niihin liittyvät tiedot (kirjoittaja/ajankohta/tykkäykset)
-- käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin
+- käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin #DONE
 - käyttäjä voi kirjoittaa viestejä jo olemassaoleviin viestiketjuihin
 - käyttäjä voi muokata luomansa viestiketjun otsikkoa
 - käyttäjä voi muokata kirjoittamansa viestin sisältöä
