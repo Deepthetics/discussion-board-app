@@ -1,5 +1,5 @@
 from app import app
-from flask import redirect, render_template, request
+from flask import redirect, render_template, request, session
 import topics
 import users
 
@@ -78,10 +78,34 @@ def remove_topic():
 
 @app.route("/topic/<int:topic_id>")
 def topic(topic_id):
+    session["topic_id"] = topic_id
     threads = topics.get_threads(topic_id)
     return render_template("topic.html", threads=threads)
 
 @app.route("/thread/<int:thread_id>")
 def thread(thread_id):
+    session["thread_id"] = thread_id
     messages = topics.get_messages(thread_id)
     return render_template("thread.html", messages=messages)
+
+@app.route("/create_thread", methods=["GET", "POST"])
+def create_thread():
+    if request.method == "GET":
+        return render_template("new_thread.html")
+
+    if request.method == "POST":
+        title = request.form["title"]
+        message_content = request.form["message_content"]
+        user_id = session["user_id"]
+        topic_id = session["topic_id"]
+
+        if len(title) < 1 or len(title) > 40:
+            return render_template("error.html", message="Thread title must be between 1-40 characters long.")
+        
+        if not topics.create_thread(title, message_content, user_id, topic_id):
+            return render_template("error.html", message="Operation failed.")
+        return redirect(f"/topic/{topic_id}")
+
+@app.route("/create_message")
+def create_message():
+    pass

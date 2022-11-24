@@ -47,3 +47,21 @@ def get_messages(thread_id):
     result = db.session.execute(sql, {"thread_id":thread_id})
     messages = result.fetchall()
     return messages
+
+def create_thread(title, message_content, user_id, topic_id):
+    try:
+        sql = "INSERT INTO threads (title, created_at, user_id, topic_id) VALUES (:title, NOW(), :user_id, :topic_id) RETURNING id"
+        result = db.session.execute(sql, {"title":title, "user_id":user_id, "topic_id":topic_id})
+        thread_id = result.fetchone()[0]
+    except:
+        return False
+    return create_message(message_content, user_id, thread_id)
+
+def create_message(content, user_id, thread_id):
+    try:
+        sql = "INSERT INTO messages (content, created_at, user_id, thread_id) VALUES (:content, NOW(), :user_id, :thread_id)"
+        db.session.execute(sql, {"content":content, "user_id":user_id, "thread_id":thread_id})
+        db.session.commit()
+    except:
+        return False
+    return True
