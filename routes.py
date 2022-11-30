@@ -1,11 +1,11 @@
-from app import app
 from flask import redirect, render_template, request, session
-import topics
+from app import app
+import discussions
 import users
 
 @app.route("/")
 def index():
-    return render_template("index.html", topics=topics.get_all())
+    return render_template("index.html", topics=discussions.get_all())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -61,7 +61,7 @@ def add_topic():
     if len(title) < 1 or len(title) > 40:
         return render_template("error.html", message="Topic title must be between 1-40 characters long.")
 
-    if not topics.add_topic(title):
+    if not discussions.add_topic(title):
         return render_template("error.html", message="Operation failed.")
     return redirect("/")
 
@@ -69,23 +69,23 @@ def add_topic():
 def remove_topic():
     title = request.form["title"]
 
-    if not topics.get_topic(title):
+    if not discussions.get_topic(title):
         return render_template("error.html", message="Topic with a given title not found. Check the topic title.")
 
-    if not topics.remove_topic(title):
+    if not discussions.remove_topic(title):
         return render_template("error.html", message="Operation failed.")
     return redirect("/")
 
 @app.route("/topic/<int:topic_id>")
 def topic(topic_id):
     session["topic_id"] = topic_id
-    threads = topics.get_threads(topic_id)
+    threads = discussions.get_threads(topic_id)
     return render_template("topic.html", threads=threads)
 
 @app.route("/thread/<int:thread_id>")
 def thread(thread_id):
     session["thread_id"] = thread_id
-    messages = topics.get_messages(thread_id)
+    messages = discussions.get_messages(thread_id)
     return render_template("thread.html", messages=messages)
 
 @app.route("/create_thread", methods=["GET", "POST"])
@@ -102,7 +102,7 @@ def create_thread():
         if len(title) < 1 or len(title) > 40:
             return render_template("error.html", message="Thread title must be between 1-40 characters long.")
         
-        if not topics.create_thread(title, message_content, user_id, topic_id):
+        if not discussions.create_thread(title, message_content, user_id, topic_id):
             return render_template("error.html", message="Operation failed.")
         return redirect(f"/topic/{topic_id}")
 

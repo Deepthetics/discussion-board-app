@@ -1,6 +1,7 @@
-from db import db
 from flask import session
 from werkzeug.security import check_password_hash, generate_password_hash
+from db import db
+
 
 def login(username, password):
     sql = "SELECT id, username, password, role FROM users WHERE username=:username"
