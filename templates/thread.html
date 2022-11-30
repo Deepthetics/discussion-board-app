@@ -1,6 +1,8 @@
 {% extends "layout.html" %}
 {% block title %}Thread{% endblock %}
 {% block content %}
+<a href="/create_message">Create new message</a>
+<hr>
 <h2>Messages</h2>
 {% for message in messages %}
 Content: {{ message.content }}

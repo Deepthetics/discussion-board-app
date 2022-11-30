@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Create new message{% endblock %}
+{% block content %}
+<h2>Create new message</h2>
+<form action="/create_message" method="POST">
+Message: <br><textarea name="content" rows="10", cols="50"></textarea>
+<p>
+<input type="submit" value="Create new">
+</form>
+{% endblock %}
