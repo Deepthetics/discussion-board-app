@@ -1,7 +1,9 @@
+import re
 from flask import redirect, render_template, request, session
 from app import app
 import discussions
 import users
+
 
 @app.route("/")
 def index():
@@ -29,24 +31,24 @@ def logout():
 def register():
     if request.method == "GET":
         return render_template("register.html")
-    
+
     if request.method == "POST":
         username = request.form["username"]
-        
+
         if len(username) < 3 or len(username) > 20:
             return render_template("error.html", message="Username must be between 3-20 characters long.")
 
         password1 = request.form["password1"]
         password2 = request.form["password2"]
-        
+
         if password1 != password2:
             return render_template("error.html", message="Given passwords do not match.")
-        
+
         if len(password1) < 6 or len(password1) > 20:
             return render_template("error.html", message="Password must be between 5-20 characters long.")
-        
+
         role = request.form["role"]
-        
+
         if role != "1" and role != "2":
             return render_template("error.html", message="Unknown user role.")
 
@@ -86,7 +88,12 @@ def topic(topic_id):
 def thread(thread_id):
     session["thread_id"] = thread_id
     messages = discussions.get_messages(thread_id)
-    return render_template("thread.html", messages=messages)
+    times = []
+
+    for message in messages:
+        times.append(re.search(r"\d+:\d+:\d+", message.created_at.time().isoformat()).group())
+
+    return render_template("thread.html", messages=messages, times=times, zip=zip)
 
 @app.route("/create_thread", methods=["GET", "POST"])
 def create_thread():
@@ -101,7 +108,7 @@ def create_thread():
 
         if len(title) < 1 or len(title) > 40:
             return render_template("error.html", message="Thread title must be between 1-40 characters long.")
-        
+
         if not discussions.create_thread(title, message_content, user_id, topic_id):
             return render_template("error.html", message="Operation failed.")
         return redirect(f"/topic/{topic_id}")
@@ -110,7 +117,7 @@ def create_thread():
 def create_message():
     if request.method == "GET":
         return render_template("new_message.html")
-    
+
     if request.method == "POST":
         content = request.form["content"]
         user_id = session["user_id"]

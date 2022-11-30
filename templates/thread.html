@@ -4,11 +4,10 @@
 <a href="/create_message">Create new message</a>
 <hr>
 <h2>Messages</h2>
-{% for message in messages %}
+{% for message, time in zip(messages, times) %}
 Content: {{ message.content }}
 <br>
-Created at: {{ "{year}-{month}-{day} ".format(year=message.created_at.year, month=message.created_at.month, day=message.created_at.day) +
-               "{hour}:{minute}:{second}".format(hour=message.created_at.hour, minute=message.created_at.minute, second=message.created_at.second) }}
+Created at: {{ "{year}-{month}-{day} ".format(year=message.created_at.year, month=message.created_at.month, day=message.created_at.day) + time }}
 <br>
 Created by: {{ message.username }}
 <hr>
