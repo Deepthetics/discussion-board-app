@@ -106,6 +106,16 @@ def create_thread():
             return render_template("error.html", message="Operation failed.")
         return redirect(f"/topic/{topic_id}")
 
-@app.route("/create_message")
+@app.route("/create_message", methods=["GET", "POST"])
 def create_message():
-    pass
+    if request.method == "GET":
+        return render_template("new_message.html")
+    
+    if request.method == "POST":
+        content = request.form["content"]
+        user_id = session["user_id"]
+        thread_id = session["thread_id"]
+
+    if not discussions.create_message(content, user_id, thread_id):
+        return render_template("error.html", message="Operation failed.")
+    return redirect(f"/thread/{thread_id}")
