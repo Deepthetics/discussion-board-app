@@ -3,7 +3,8 @@
 {% block content %}
 <a href="/create_message">Create new message</a>
 <hr>
-<h2>Messages</h2>
+<h2>{{ thread_title }}</h2>
+<h3>Messages</h3>
 {% for message, time in zip(messages, times) %}
 Content: {{ message.content }}
 <br>

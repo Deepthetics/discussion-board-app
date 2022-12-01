@@ -78,8 +78,8 @@ def remove_topic():
         return render_template("error.html", message="Operation failed.")
     return redirect("/")
 
-@app.route("/topic/<int:topic_id>")
-def topic(topic_id):
+@app.route("/topic/<int:topic_id>/<topic_title>")
+def topic(topic_id, topic_title):
     session["topic_id"] = topic_id
     threads = discussions.get_threads(topic_id)
     times = []
@@ -87,10 +87,10 @@ def topic(topic_id):
     for thread in threads:
         times.append(re.search(r"\d+:\d+:\d+", thread.created_at.time().isoformat()).group())
 
-    return render_template("topic.html", threads=threads, times=times, zip=zip)
+    return render_template("topic.html", topic_title=topic_title, threads=threads, times=times, zip=zip)
 
-@app.route("/thread/<int:thread_id>")
-def thread(thread_id):
+@app.route("/thread/<int:thread_id>/<thread_title>")
+def thread(thread_id, thread_title):
     session["thread_id"] = thread_id
     messages = discussions.get_messages(thread_id)
     times = []
@@ -98,7 +98,7 @@ def thread(thread_id):
     for message in messages:
         times.append(re.search(r"\d+:\d+:\d+", message.created_at.time().isoformat()).group())
 
-    return render_template("thread.html", messages=messages, times=times, zip=zip)
+    return render_template("thread.html", thread_title=thread_title, messages=messages, times=times, zip=zip)
 
 @app.route("/create_thread", methods=["GET", "POST"])
 def create_thread():
