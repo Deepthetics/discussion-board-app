@@ -13,6 +13,7 @@ Created by: {{ message.username }}
 <br>
 {% if session.username == message.username %}
 <a href="/edit_message/{{ message.id }}/{{ message.content }}/{{ message.username }}">Edit</a>
+<a href="/remove_message/{{ message.id }}/{{ message.username }}">Remove</a>
 {% endif %}
 <hr>
 {% endfor %}

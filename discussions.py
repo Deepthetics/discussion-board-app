@@ -72,5 +72,17 @@ def edit_thread():
 
 def edit_message(message_id, content):
     sql = "UPDATE messages SET content=:content WHERE id=:message_id"
-    db.session.execute(sql, {"content":content, "message_id":message_id})
+    db.session.execute(sql, {"message_id":message_id, "content":content})
     db.session.commit()
+
+def remove_thread():
+    pass
+
+def remove_message(message_id):
+    try:
+        sql = "DELETE FROM messages WHERE id=:message_id"
+        db.session.execute(sql, {"message_id":message_id})
+        db.session.commit()
+    except:
+        return False
+    return True

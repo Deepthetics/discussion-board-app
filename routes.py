@@ -130,7 +130,7 @@ def create_message():
 @app.route("/edit_message/<int:message_id>/<message_content>/<username>", methods=["GET", "POST"])
 def edit_message(message_id, message_content, username):
     if session["username"] != username:
-        return render_template("error.html", message="Unauthorized action")
+        return render_template("error.html", message="Unauthorized action.")
 
     if request.method == "GET":
         return render_template("edit_message.html", message_id=message_id, message_content=message_content, username=username)
@@ -138,6 +138,17 @@ def edit_message(message_id, message_content, username):
     if request.method == "POST":
         content = request.form["content"]
         discussions.edit_message(message_id, content)
+
+    thread_id = session["thread_id"]
+    return redirect(f"/thread/{thread_id}")
+
+@app.route("/remove_message/<int:message_id>/<username>")
+def remove_message(message_id, username):
+    if session["username"] != username:
+        return render_template("error.html", message="Unauthorized action.")
+
+    if not discussions.remove_message(message_id):
+        return render_template("error.html", message="Operation failed.")
 
     thread_id = session["thread_id"]
     return redirect(f"/thread/{thread_id}")
