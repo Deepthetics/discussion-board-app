@@ -82,7 +82,12 @@ def remove_topic():
 def topic(topic_id):
     session["topic_id"] = topic_id
     threads = discussions.get_threads(topic_id)
-    return render_template("topic.html", threads=threads)
+    times = []
+
+    for thread in threads:
+        times.append(re.search(r"\d+:\d+:\d+", thread.created_at.time().isoformat()).group())
+
+    return render_template("topic.html", threads=threads, times=times, zip=zip)
 
 @app.route("/thread/<int:thread_id>")
 def thread(thread_id):
