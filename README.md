@@ -26,7 +26,7 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä voi muokata luomansa viestiketjun otsikkoa
 - käyttäjä voi muokata kirjoittamansa viestin sisältöä #DONE
 - käyttäjä voi poistaa luomansa viestiketjun
-- käyttäjä voi poistaa kirjoittamansa viestin
+- käyttäjä voi poistaa kirjoittamansa viestin #DONE
 - ylläpitäjä voi luoda keskustelualueita #DONE
 - ylläpitäjä voi poistaa keskustelualueita #DONE
 
