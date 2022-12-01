@@ -10,6 +10,10 @@ Content: {{ message.content }}
 Created at: {{ "{year}-{month}-{day} ".format(year=message.created_at.year, month=message.created_at.month, day=message.created_at.day) + time }}
 <br>
 Created by: {{ message.username }}
+<br>
+{% if session.username == message.username %}
+<a href="/edit_message/{{ message.id }}/{{ message.content }}/{{ message.username }}">Edit</a>
+{% endif %}
 <hr>
 {% endfor %}
 {% endblock %}

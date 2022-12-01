@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Edit message{% endblock %}
+{% block content %}
+<h2>Edit message</h2>
+<form action="/edit_message/{{ message_id }}/{{ message_content }}/{{ username }}" method="POST">
+Message: <br><textarea name="content" rows="10", cols="50">{{ message_content }}</textarea>
+<p>
+<input type="submit" value="Commit changes">
+</form>
+{% endblock %}
