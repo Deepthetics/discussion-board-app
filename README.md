@@ -24,7 +24,7 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin #DONE
 - käyttäjä voi kirjoittaa viestejä jo olemassaoleviin viestiketjuihin #DONE
 - käyttäjä voi muokata luomansa viestiketjun otsikkoa
-- käyttäjä voi muokata kirjoittamansa viestin sisältöä
+- käyttäjä voi muokata kirjoittamansa viestin sisältöä #DONE
 - käyttäjä voi poistaa luomansa viestiketjun
 - käyttäjä voi poistaa kirjoittamansa viestin
 - ylläpitäjä voi luoda keskustelualueita #DONE
