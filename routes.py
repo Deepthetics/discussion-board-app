@@ -126,3 +126,18 @@ def create_message():
     if not discussions.create_message(content, user_id, thread_id):
         return render_template("error.html", message="Operation failed.")
     return redirect(f"/thread/{thread_id}")
+
+@app.route("/edit_message/<int:message_id>/<message_content>/<username>", methods=["GET", "POST"])
+def edit_message(message_id, message_content, username):
+    if session["username"] != username:
+        return render_template("error.html", message="Unauthorized action")
+
+    if request.method == "GET":
+        return render_template("edit_message.html", message_id=message_id, message_content=message_content, username=username)
+
+    if request.method == "POST":
+        content = request.form["content"]
+        discussions.edit_message(message_id, content)
+
+    thread_id = session["thread_id"]
+    return redirect(f"/thread/{thread_id}")

@@ -66,3 +66,11 @@ def create_message(content, user_id, thread_id):
     except:
         return False
     return True
+
+def edit_thread():
+    pass
+
+def edit_message(message_id, content):
+    sql = "UPDATE messages SET content=:content WHERE id=:message_id"
+    db.session.execute(sql, {"content":content, "message_id":message_id})
+    db.session.commit()
