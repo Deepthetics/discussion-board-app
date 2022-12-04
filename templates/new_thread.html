@@ -9,4 +9,5 @@ Message: <br><textarea name="message_content" rows="10", cols="50"></textarea>
 <p>
 <input type="submit" value="Create new">
 </form>
+<a href="/topic/{{ session["topic_id"] }}/{{ session["topic_title"] }}">Go back</a>
 {% endblock %}

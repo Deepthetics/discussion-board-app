@@ -44,7 +44,7 @@ def register():
         if password1 != password2:
             return render_template("error.html", message="Given passwords do not match.")
 
-        if len(password1) < 6 or len(password1) > 20:
+        if len(password1) < 5 or len(password1) > 20:
             return render_template("error.html", message="Password must be between 5-20 characters long.")
 
         role = request.form["role"]
@@ -81,6 +81,7 @@ def remove_topic():
 @app.route("/topic/<int:topic_id>/<topic_title>")
 def topic(topic_id, topic_title):
     session["topic_id"] = topic_id
+    session["topic_title"] = topic_title
     threads = discussions.get_threads(topic_id)
     times = []
 
@@ -92,13 +93,14 @@ def topic(topic_id, topic_title):
 @app.route("/thread/<int:thread_id>/<thread_title>")
 def thread(thread_id, thread_title):
     session["thread_id"] = thread_id
+    session["thread_title"] = thread_title
     messages = discussions.get_messages(thread_id)
     times = []
 
     for message in messages:
         times.append(re.search(r"\d+:\d+:\d+", message.created_at.time().isoformat()).group())
 
-    return render_template("thread.html", thread_title=thread_title, messages=messages, times=times, zip=zip)
+    return render_template("thread.html", thread_id=thread_id, thread_title=thread_title, messages=messages, times=times, zip=zip)
 
 @app.route("/create_thread", methods=["GET", "POST"])
 def create_thread():
@@ -110,13 +112,14 @@ def create_thread():
         message_content = request.form["message_content"]
         user_id = session["user_id"]
         topic_id = session["topic_id"]
+        topic_title = session["topic_title"]
 
         if len(title) < 1 or len(title) > 40:
             return render_template("error.html", message="Thread title must be between 1-40 characters long.")
 
         if not discussions.create_thread(title, message_content, user_id, topic_id):
             return render_template("error.html", message="Operation failed.")
-        return redirect(f"/topic/{topic_id}")
+        return redirect(f"/topic/{topic_id}/{topic_title}")
 
 @app.route("/create_message", methods=["GET", "POST"])
 def create_message():
@@ -127,10 +130,27 @@ def create_message():
         content = request.form["content"]
         user_id = session["user_id"]
         thread_id = session["thread_id"]
+        thread_title = session["thread_title"]
 
     if not discussions.create_message(content, user_id, thread_id):
         return render_template("error.html", message="Operation failed.")
-    return redirect(f"/thread/{thread_id}")
+    return redirect(f"/thread/{thread_id}/{thread_title}")
+
+#@app.route("/edit_thread/<int:thread_id>/<thread_title>/<username>", methods=["GET", "POST"])
+#def edit_thread(thread_id, thread_title, username):
+#    if session["username"] != username:
+#        return render_template("error.html", message="Unauthorized action.")
+#
+#    if request.method == "GET":
+#        print(thread_title)
+#        return render_template("edit_thread.html", thread_id=thread_id, thread_title=thread_title, username=username)
+#
+#    if request.method == "POST":
+#        title = request.form["title"]
+#        discussions.edit_thread(thread_id, title)
+#
+#    thread_id = session["thread_id"]
+#    return redirect(f"/thread/{thread_id}/{title}/{username}")
 
 @app.route("/edit_message/<int:message_id>/<message_content>/<username>", methods=["GET", "POST"])
 def edit_message(message_id, message_content, username):
@@ -145,7 +165,20 @@ def edit_message(message_id, message_content, username):
         discussions.edit_message(message_id, content)
 
     thread_id = session["thread_id"]
-    return redirect(f"/thread/{thread_id}")
+    thread_title = session["thread_title"]
+    return redirect(f"/thread/{thread_id}/{thread_title}")
+
+#@app.route("/remove_thread/<int:thread_id>/<username>")
+#def remove_thread(thread_id, username):
+#    if session["username"] != username:
+#        return render_template("error.html", message="Unauthorized action.")
+#
+#    if not discussions.remove_thread(thread_id):
+#        return render_template("error.html", message="Operation failed.")
+#
+#    topic_id = session["topic_id"]
+#    topic_title = session["topic_title"]
+#    return redirect(f"/topic/{topic_id}/{topic_title}")
 
 @app.route("/remove_message/<int:message_id>/<username>")
 def remove_message(message_id, username):
@@ -156,4 +189,5 @@ def remove_message(message_id, username):
         return render_template("error.html", message="Operation failed.")
 
     thread_id = session["thread_id"]
-    return redirect(f"/thread/{thread_id}")
+    thread_title = session["thread_title"]
+    return redirect(f"/thread/{thread_id}/{thread_title}")

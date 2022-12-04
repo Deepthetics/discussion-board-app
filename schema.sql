@@ -15,7 +15,7 @@ CREATE TABLE threads (
     title TEXT, 
     created_at TIMESTAMP, 
     user_id INTEGER REFERENCES users, 
-    topic_id INTEGER REFERENCES topics
+    topic_id INTEGER REFERENCES topics ON DELETE CASCADE
 );
 
 CREATE TABLE messages (
@@ -23,5 +23,5 @@ CREATE TABLE messages (
     content TEXT, 
     created_at TIMESTAMP, 
     user_id INTEGER REFERENCES users, 
-    thread_id INTEGER REFERENCES threads
+    thread_id INTEGER REFERENCES threads ON DELETE CASCADE
 );

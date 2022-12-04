@@ -67,16 +67,24 @@ def create_message(content, user_id, thread_id):
         return False
     return True
 
-def edit_thread():
-    pass
+def edit_thread(thread_id, title):
+    sql = "UPDATE threads SET title=:title WHERE id=:thread_id RETURNING title"
+    db.session.execute(sql, {"thread_id":thread_id, "title":title})
+    db.session.commit()
 
 def edit_message(message_id, content):
     sql = "UPDATE messages SET content=:content WHERE id=:message_id"
     db.session.execute(sql, {"message_id":message_id, "content":content})
     db.session.commit()
 
-def remove_thread():
-    pass
+def remove_thread(thread_id):
+    try:
+        sql = "DELETE FROM threads WHERE id=:thread_id"
+        db.session.execute(sql, {"thread_id":thread_id})
+        db.session.commit()
+    except:
+        return False
+    return True
 
 def remove_message(message_id):
     try:

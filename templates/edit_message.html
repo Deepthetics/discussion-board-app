@@ -7,4 +7,5 @@ Message: <br><textarea name="content" rows="10", cols="50">{{ message_content }}
 <p>
 <input type="submit" value="Save changes">
 </form>
+<a href="/topic/{{ session["thread_id"] }}/{{ session["thread_title"] }}">Go back</a>
 {% endblock %}
