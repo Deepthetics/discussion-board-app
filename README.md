@@ -1,40 +1,33 @@
-# Vaatimusmäärittely
+# Discussion Board App
 
-## Sovelluksen tarkoitus
+## Installation
 
-Sovelluksen on tarkoitus toimia keskustelualustana, missä käyttäjät voivat käydä keskustelua eri aiheista. Aiheet muodostavat omat keskustelualueensa, jotka sisältävät aiheeseen liittyviä käyttäjien luomia viestiketjuja.
+1. Clone the repository to your local device.
 
-## Käyttäjät
+2. Create virtual environment for the program:
 
-Sovelluksella on kahdenlaisia käyttäjiä:
-- peruskäyttäjä
-- ylläpitäjä
+```bash
+python3 -m venv venv
+```
 
-## Sovelluksen keskeiset toiminnot
+3. Activate virtual environment:
 
-- käyttäjä voi luoda uuden tunnuksen #DONE
-- käyttäjä voi kirjautua sisään olemassaolevalla tunnuksella #DONE
-- käyttäjä voi kirjautua ulos #DONE
-- käyttäjä näkee sovelluksen etusivulla olemassaolevat keskustelualueet #DONE
-- käyttäjä näkee keskustelualueiden sisältämien viestiketjujen ja viestien lukumäärät
-- käyttäjä näkee keskustelualueen sivulla keskustelualueen viestiketjut #DONE
-- käyttäjä näkee viestiketjujen sisältämien viestien lukumäärät
-- käyttäjä näkee viestiketjun sivulla siihen kirjoitetut viestit #DONE
-- käyttäjä näkee viestien yhteydessä niihin liittyvät tiedot (kirjoittaja/ajankohta/tykkäykset) #DONE
-- käyttäjä voi luoda uuden viestiketjun antamalla sille otsikon ja kirjoittamalla viestiketjun aloitusviestin #DONE
-- käyttäjä voi kirjoittaa viestejä jo olemassaoleviin viestiketjuihin #DONE
-- käyttäjä voi muokata luomansa viestiketjun otsikkoa
-- käyttäjä voi muokata kirjoittamansa viestin sisältöä #DONE
-- käyttäjä voi poistaa luomansa viestiketjun
-- käyttäjä voi poistaa kirjoittamansa viestin #DONE
-- ylläpitäjä voi luoda keskustelualueita #DONE
-- ylläpitäjä voi poistaa keskustelualueita #DONE
+```bash
+source venv/bin/activate
+```
 
-## Sovelluksen jatkokehitysideat
+4. Install dependencies:
 
-Tässä lueteltuja toimintoja toteutetaan ajan salliessa, kun keskeiset toiminnot on toteutettu.
+```bash
+pip install -r requirements.txt
+```
 
-- käyttäjä näkee keskustelualueen yhteydessä viimeksi aktiivisen viestiketjun sekä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
-- käyttäjä näkee viestiketjun yhteydessä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
-- käyttäjä voi tykätä muiden käyttäjien viesteistä
-- käyttäjä voi lähettää yksityisviestejä muille käyttäjille
+5. Start the program:
+
+```bash
+flask run
+```
+
+## Documentation
+
+[Project Specification](https://github.com/Deepthetics/discussion-board-app/blob/main/documentation/project_specification.md)
