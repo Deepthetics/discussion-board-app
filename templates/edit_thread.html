@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Edit thread{% endblock %}
+{% block content %}
+<h2>Edit thread</h2>
+<form action="/edit_thread/{{ thread_id }}/{{ thread_title }}/{{ username }}" method="POST">
+Title: <br><input type="text" name="title" value="{{ thread_title }}">
+<p>
+<input type="submit" value="Save changes">
+</form>
+{% endblock %}
