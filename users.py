@@ -21,6 +21,8 @@ def login(username, password):
 
 def logout():
     del session["user_id"]
+    del session["username"]
+    del session["role"]
 
 def register(username, password, role):
     password_hash = generate_password_hash(password)
