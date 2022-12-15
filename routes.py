@@ -7,7 +7,7 @@ import users
 
 @app.route("/")
 def index():
-    return render_template("index.html", topics=discussions.get_all())
+    return render_template("index.html", topics=discussions.get_topics())
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -90,10 +90,11 @@ def topic(topic_id, topic_title):
 
     return render_template("topic.html", topic_title=topic_title, threads=threads, times=times, zip=zip)
 
-@app.route("/thread/<int:thread_id>/<thread_title>")
-def thread(thread_id, thread_title):
+@app.route("/thread/<int:thread_id>/<thread_title>/<thread_username>")
+def thread(thread_id, thread_title, thread_username):
     session["thread_id"] = thread_id
     session["thread_title"] = thread_title
+    session["thread_username"] = thread_username
     messages = discussions.get_messages(thread_id)
     times = []
 
@@ -168,17 +169,17 @@ def edit_message(message_id, message_content, username):
     thread_title = session["thread_title"]
     return redirect(f"/thread/{thread_id}/{thread_title}")
 
-#@app.route("/remove_thread/<int:thread_id>/<username>")
-#def remove_thread(thread_id, username):
-#    if session["username"] != username:
-#        return render_template("error.html", message="Unauthorized action.")
-#
-#    if not discussions.remove_thread(thread_id):
-#        return render_template("error.html", message="Operation failed.")
-#
-#    topic_id = session["topic_id"]
-#    topic_title = session["topic_title"]
-#    return redirect(f"/topic/{topic_id}/{topic_title}")
+@app.route("/remove_thread/<int:thread_id>")
+def remove_thread(thread_id):
+    if session["username"] != session["thread_username"]:
+        return render_template("error.html", message="Unauthorized action.")
+
+    if not discussions.remove_thread(thread_id):
+        return render_template("error.html", message="Operation failed.")
+
+    topic_id = session["topic_id"]
+    topic_title = session["topic_title"]
+    return redirect(f"/topic/{topic_id}/{topic_title}")
 
 @app.route("/remove_message/<int:message_id>/<username>")
 def remove_message(message_id, username):

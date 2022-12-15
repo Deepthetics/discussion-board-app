@@ -4,9 +4,9 @@
 <a href="/create_message">Create new message</a>
 <hr>
 <h2>{{ thread_title }}</h2>
-{% if session.username == username %}
-<!--<a href="/edit_thread/{{ thread_id}}/{{ thread_title }}/{{ username }}">Edit</a>-->
-<!--<a href="/remove_thread/{{ thread_id }}/{{ username }}">Remove</a>-->
+{% if session.username == session.thread_username %}
+<!--<a href="/edit_thread/{{ thread_id}}/{{ thread_title }}">Edit</a>-->
+<a href="/remove_thread/{{ thread_id }}">Remove</a>
 {% endif %}
 <h3>Messages</h3>
 {% for message, time in zip(messages, times) %}
