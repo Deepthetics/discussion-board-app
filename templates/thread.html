@@ -5,7 +5,7 @@
 <hr>
 <h2>{{ thread_title }}</h2>
 {% if session.username == session.thread_username %}
-<!--<a href="/edit_thread/{{ thread_id}}/{{ thread_title }}">Edit</a>-->
+<a href="/edit_thread/{{ thread_id}}/{{ thread_title }}">Edit</a>
 <a href="/remove_thread/{{ thread_id }}">Remove</a>
 {% endif %}
 <h3>Messages</h3>

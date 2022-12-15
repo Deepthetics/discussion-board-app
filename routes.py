@@ -137,21 +137,24 @@ def create_message():
         return render_template("error.html", message="Operation failed.")
     return redirect(f"/thread/{thread_id}/{thread_title}")
 
-#@app.route("/edit_thread/<int:thread_id>/<thread_title>/<username>", methods=["GET", "POST"])
-#def edit_thread(thread_id, thread_title, username):
-#    if session["username"] != username:
-#        return render_template("error.html", message="Unauthorized action.")
-#
-#    if request.method == "GET":
-#        print(thread_title)
-#        return render_template("edit_thread.html", thread_id=thread_id, thread_title=thread_title, username=username)
-#
-#    if request.method == "POST":
-#        title = request.form["title"]
-#        discussions.edit_thread(thread_id, title)
-#
-#    thread_id = session["thread_id"]
-#    return redirect(f"/thread/{thread_id}/{title}/{username}")
+@app.route("/edit_thread/<int:thread_id>/<thread_title>", methods=["GET", "POST"])
+def edit_thread(thread_id, thread_title):
+    if session["username"] != session["thread_username"]:
+        return render_template("error.html", message="Unauthorized action.")
+
+    thread_id = session["thread_id"]
+    thread_title = session["thread_title"]
+    thread_username = session["thread_username"]
+
+    if request.method == "GET":
+        return render_template("edit_thread.html", thread_id=thread_id, thread_title=thread_title)
+
+    if request.method == "POST":
+        new_title = request.form["title"]
+        thread_title = discussions.edit_thread(thread_id, new_title)
+        session["thread_title"] = thread_title
+
+    return redirect(f"/thread/{thread_id}/{thread_title}/{thread_username}")
 
 @app.route("/edit_message/<int:message_id>/<message_content>/<username>", methods=["GET", "POST"])
 def edit_message(message_id, message_content, username):

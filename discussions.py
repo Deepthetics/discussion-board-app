@@ -67,10 +67,12 @@ def create_message(content, user_id, thread_id):
         return False
     return True
 
-def edit_thread(thread_id, title):
+def edit_thread(thread_id, new_title):
     sql = "UPDATE threads SET title=:title WHERE id=:thread_id RETURNING title"
-    db.session.execute(sql, {"thread_id":thread_id, "title":title})
+    result = db.session.execute(sql, {"thread_id":thread_id, "title":new_title})
+    new_title = result.fetchone()[0]
     db.session.commit()
+    return new_title
 
 def edit_message(message_id, content):
     sql = "UPDATE messages SET content=:content WHERE id=:message_id"
