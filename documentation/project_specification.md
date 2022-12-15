@@ -1,6 +1,6 @@
 ## Sovelluksen tarkoitus
 
-Sovelluksen on tarkoitus toimia keskustelualustana, missä käyttäjät voivat käydä keskustelua eri aiheista. Aiheet muodostavat omat keskustelualueensa, jotka sisältävät aiheeseen liittyviä käyttäjien luomia viestiketjuja.
+Sovelluksen on tarkoitus toimia keskustelualustana, missä käyttäjät voivat käydä keskustelua eri aiheista. Aiheet muodostavat omat keskustelualueensa, jotka sisältävät aiheeseen liittyviä käyttäjien luomia viestiketjuja. Viestiketjut sisältävät käyttäjien kirjoittamia viestejä.
 
 ## Käyttäjät
 
@@ -23,10 +23,12 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjä voi kirjoittaa viestejä jo olemassaoleviin viestiketjuihin #DONE
 - käyttäjä voi muokata luomansa viestiketjun otsikkoa
 - käyttäjä voi muokata kirjoittamansa viestin sisältöä #DONE
-- käyttäjä voi poistaa luomansa viestiketjun
+- käyttäjä voi poistaa luomansa viestiketjun #DONE
 - käyttäjä voi poistaa kirjoittamansa viestin #DONE
 - ylläpitäjä voi luoda keskustelualueita #DONE
 - ylläpitäjä voi poistaa keskustelualueita #DONE
+- ylläpitäjä voi poistaa viestiketjuja
+- ylläpitäjä voi poistaa viestejä
 
 ## Sovelluksen jatkokehitysideat
 
@@ -36,3 +38,4 @@ Tässä lueteltuja toimintoja toteutetaan ajan salliessa, kun keskeiset toiminno
 - käyttäjä näkee viestiketjun yhteydessä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
 - käyttäjä voi tykätä muiden käyttäjien viesteistä
 - käyttäjä voi lähettää yksityisviestejä muille käyttäjille
+- ylläpitäjä voi poistaa käyttäjiä
