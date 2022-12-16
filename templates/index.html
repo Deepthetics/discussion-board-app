@@ -12,6 +12,8 @@ You are not logged in. You can login <a href="/login">here</a>.
 <h2>Topics</h2>
 {% for topic in topics %}
 <a href="/topic/{{ topic.id }}/{{ topic.title }}">{{ topic.title }}</a>
+<br>
+Threads: {{ topic.thread_count }}
 <hr>
 {% endfor %}
 {% if session.role == 2 %}

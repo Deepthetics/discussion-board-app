@@ -11,6 +11,8 @@
 Created at: {{ "{year}-{month}-{day} ".format(year=thread.created_at.year, month=thread.created_at.month, day=thread.created_at.day) + time }}
 <br>
 Created by: {{ thread.username }}
+<br>
+Messages: {{ thread.message_count }}
 <hr>
 {% endfor %}
 <a href="/">Back to front page</a>
