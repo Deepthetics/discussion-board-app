@@ -132,10 +132,11 @@ def create_message():
         user_id = session["user_id"]
         thread_id = session["thread_id"]
         thread_title = session["thread_title"]
+        thread_username = session["thread_username"]
 
     if not discussions.create_message(content, user_id, thread_id):
         return render_template("error.html", message="Operation failed.")
-    return redirect(f"/thread/{thread_id}/{thread_title}")
+    return redirect(f"/thread/{thread_id}/{thread_title}/{thread_username}")
 
 @app.route("/edit_thread/<int:thread_id>/<thread_title>", methods=["GET", "POST"])
 def edit_thread(thread_id, thread_title):
@@ -170,7 +171,8 @@ def edit_message(message_id, message_content, username):
 
     thread_id = session["thread_id"]
     thread_title = session["thread_title"]
-    return redirect(f"/thread/{thread_id}/{thread_title}")
+    thread_username = session["thread_username"]
+    return redirect(f"/thread/{thread_id}/{thread_title}/{thread_username}")
 
 @app.route("/remove_thread/<int:thread_id>")
 def remove_thread(thread_id):
@@ -194,4 +196,5 @@ def remove_message(message_id, username):
 
     thread_id = session["thread_id"]
     thread_title = session["thread_title"]
-    return redirect(f"/thread/{thread_id}/{thread_title}")
+    thread_username = session["thread_username"]
+    return redirect(f"/thread/{thread_id}/{thread_title}/{thread_username}")

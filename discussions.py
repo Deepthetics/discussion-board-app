@@ -2,7 +2,9 @@ from db import db
 
 
 def get_topics():
-    sql = "SELECT id, title FROM topics"
+    sql = """SELECT topics.id, topics.title, COUNT(threads.topic_id) AS thread_count FROM topics
+             LEFT JOIN threads ON topics.id = threads.topic_id GROUP BY topics.id ORDER BY topics.title;"""
+    #sql = "SELECT id, title FROM topics"
     result = db.session.execute(sql)
     topics = result.fetchall()
     return topics
@@ -36,8 +38,11 @@ def remove_topic(title):
     return True
 
 def get_threads(topic_id):
-    sql = """SELECT threads.id, threads.title, threads.created_at, users.username FROM threads, users
-             WHERE threads.user_id=users.id AND threads.topic_id=:topic_id ORDER BY threads.id;"""
+    sql = """SELECT threads.id, threads.title, threads.created_at, users.username, COUNT(messages.thread_id) AS message_count FROM threads
+             LEFT JOIN users ON threads.user_id=users.id LEFT JOIN messages ON threads.id=messages.thread_id
+             WHERE threads.topic_id=:topic_id GROUP BY threads.id, users.username ORDER BY threads.id;"""
+    #sql = """SELECT threads.id, threads.title, threads.created_at, users.username FROM threads, users
+    #         WHERE threads.user_id=users.id AND threads.topic_id=:topic_id ORDER BY threads.id;"""
     result = db.session.execute(sql, {"topic_id":topic_id})
     threads = result.fetchall()
     return threads
