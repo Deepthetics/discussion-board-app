@@ -6,6 +6,7 @@
 Message: <br><textarea name="content" rows="10", cols="50"></textarea>
 <p>
 <input type="submit" value="Create new">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
-<a href="/thread/{{ session["thread_id"] }}/{{ session["thread_title"] }}">Go back</a>
+<a href="/thread/{{ session.thread_id }}/{{ session.thread_title }}">Go back</a>
 {% endblock %}

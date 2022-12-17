@@ -1,5 +1,5 @@
 import re
-from flask import redirect, render_template, request, session
+from flask import abort, redirect, render_template, request, session
 from app import app
 import discussions
 import users
@@ -109,6 +109,10 @@ def create_thread():
         return render_template("new_thread.html")
 
     if request.method == "POST":
+
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
+
         title = request.form["title"]
         message_content = request.form["message_content"]
         user_id = session["user_id"]
@@ -131,6 +135,10 @@ def create_message():
         return render_template("new_message.html")
 
     if request.method == "POST":
+
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
+
         content = request.form["content"]
         user_id = session["user_id"]
         thread_id = session["thread_id"]
@@ -157,6 +165,10 @@ def edit_thread(thread_id, thread_title):
         return render_template("edit_thread.html", thread_id=thread_id, thread_title=thread_title)
 
     if request.method == "POST":
+
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
+
         new_title = request.form["title"]
 
         if len(new_title) < 1 or len(new_title) > 40:
@@ -176,6 +188,10 @@ def edit_message(message_id, message_content, username):
         return render_template("edit_message.html", message_id=message_id, message_content=message_content, username=username)
 
     if request.method == "POST":
+
+        if session["csrf_token"] != request.form["csrf_token"]:
+            abort(403)
+
         content = request.form["content"]
 
         if len(content) < 1 or len(content) > 1000:

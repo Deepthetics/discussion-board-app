@@ -6,5 +6,6 @@
 Title: <br><input type="text" name="title" value="{{ thread_title }}">
 <p>
 <input type="submit" value="Save changes">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% endblock %}

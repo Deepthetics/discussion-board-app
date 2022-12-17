@@ -22,5 +22,5 @@ Created by: {{ message.username }}
 {% endif %}
 <hr>
 {% endfor %}
-<a href="/topic/{{ session["topic_id"] }}/{{ session["topic_title"] }}">Go back</a>
+<a href="/topic/{{ session.topic_id }}/{{ session.topic_title }}">Go back</a>
 {% endblock %}
