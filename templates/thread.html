@@ -6,6 +6,8 @@
 <h2>{{ thread_title }}</h2>
 {% if session.username == session.thread_username %}
 <a href="/edit_thread/{{ thread_id}}/{{ thread_title }}">Edit</a>
+{% endif %}
+{% if session.username == session.thread_username or session.role == 2 %}
 <a href="/remove_thread/{{ thread_id }}">Remove</a>
 {% endif %}
 <h3>Messages</h3>
@@ -18,6 +20,8 @@ Created by: {{ message.username }}
 <br>
 {% if session.username == message.username %}
 <a href="/edit_message/{{ message.id }}/{{ message.content }}/{{ message.username }}">Edit</a>
+{% endif %}
+{% if session.username == message.username or session.role == 2 %}
 <a href="/remove_message/{{ message.id }}/{{ message.username }}">Remove</a>
 {% endif %}
 <hr>

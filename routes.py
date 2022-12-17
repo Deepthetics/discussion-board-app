@@ -206,7 +206,7 @@ def edit_message(message_id, message_content, username):
 
 @app.route("/remove_thread/<int:thread_id>")
 def remove_thread(thread_id):
-    if session["username"] != session["thread_username"]:
+    if session["username"] != session["thread_username"] and session["role"] != 2:
         return render_template("error.html", message="Unauthorized action.")
 
     if not discussions.remove_thread(thread_id):
@@ -218,7 +218,7 @@ def remove_thread(thread_id):
 
 @app.route("/remove_message/<int:message_id>/<username>")
 def remove_message(message_id, username):
-    if session["username"] != username:
+    if session["username"] != username and session["role"] != 2:
         return render_template("error.html", message="Unauthorized action.")
 
     if not discussions.remove_message(message_id):
