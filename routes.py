@@ -117,6 +117,9 @@ def create_thread():
 
         if len(title) < 1 or len(title) > 40:
             return render_template("error.html", message="Thread title must be between 1-40 characters long.")
+        
+        if len(message_content) < 1 or len(message_content) > 1000:
+            return render_template("error.html", message="Message must be between 1-1000 characters long.")
 
         if not discussions.create_thread(title, message_content, user_id, topic_id):
             return render_template("error.html", message="Operation failed.")
@@ -133,6 +136,9 @@ def create_message():
         thread_id = session["thread_id"]
         thread_title = session["thread_title"]
         thread_username = session["thread_username"]
+
+        if len(content) < 1 or len(content) > 1000:
+            return render_template("error.html", message="Message must be between 1-1000 characters long.")
 
     if not discussions.create_message(content, user_id, thread_id):
         return render_template("error.html", message="Operation failed.")
@@ -152,6 +158,10 @@ def edit_thread(thread_id, thread_title):
 
     if request.method == "POST":
         new_title = request.form["title"]
+
+        if len(new_title) < 1 or len(new_title) > 40:
+            return render_template("error.html", message="Thread title must be between 1-40 characters long.")
+
         thread_title = discussions.edit_thread(thread_id, new_title)
         session["thread_title"] = thread_title
 
@@ -167,6 +177,10 @@ def edit_message(message_id, message_content, username):
 
     if request.method == "POST":
         content = request.form["content"]
+
+        if len(content) < 1 or len(content) > 1000:
+            return render_template("error.html", message="Message must be between 1-1000 characters long.")
+
         discussions.edit_message(message_id, content)
 
     thread_id = session["thread_id"]
