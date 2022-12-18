@@ -32,7 +32,9 @@ pip install -r requirements.txt
 psql (database name) < schema.sql
 ```
 
-6. Start the program:
+6. Create file ".env" in the project root and in that file set value for variable "DATABASE_URL" to be the address of the database used and set value for variable "SECRET_KEY" to be the secret key used by the app.
+
+7. Start the program:
 
 ```bash
 flask run
