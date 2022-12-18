@@ -72,7 +72,7 @@ def remove_topic():
     title = request.form["title"]
 
     if not discussions.get_topic(title):
-        return render_template("error.html", message="Topic with a given title not found. Check the topic title.")
+        return render_template("error.html", message="Topic with the given title not found. Check the topic title.")
 
     if not discussions.remove_topic(title):
         return render_template("error.html", message="Operation failed.")

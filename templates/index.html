@@ -2,11 +2,11 @@
 {% block title %}Front page{% endblock %}
 {% block content %}
 {% if session.user_id %}
-You are logged in as {{ session.username }}.
+You are logged in as <b>{{ session.username }}</b>.
 <p></p>
 <a href="/logout" class="btn btn-primary">Logout</a>
 {% else %}
-You are not logged in. You can login <a href="/login">here</a>.
+You are not logged in. You can login <a href="/login" style="color: blue">here</a>.
 {% endif %}
 <hr>
 <h2>Topics</h2>
