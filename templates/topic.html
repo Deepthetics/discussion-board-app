@@ -7,14 +7,15 @@
 <h2>{{ topic_title }}</h2>
 <br>
 {% for thread, time in zip(threads, times) %}
-<a href="/thread/{{ thread.id }}/{{ thread.title }}/{{ thread.username }}">{{ thread.title }}</a>
-<br>
-Created at: {{ "{year}-{month}-{day} ".format(year=thread.created_at.year, month=thread.created_at.month, day=thread.created_at.day) + time }}
-<br>
-Created by: {{ thread.username }}
-<br>
-Messages: {{ thread.message_count }}
-<hr>
+<div class="card bg-light">
+  <div class="card-body">
+    <h5><a href="/thread/{{ thread.id }}/{{ thread.title }}/{{ thread.username }}" class="text-black">{{ thread.title }}</a></h5>
+    <p></p>
+    {{ thread.message_count }} messages
+    <p></p>
+    Created by <b>{{ thread.username }}</b> at {{ "{day}.{month}.{year} ".format(year=thread.created_at.year, month=thread.created_at.month, day=thread.created_at.day) + time }}
+  </div>
+</div>
 {% endfor %}
 <br>
 <a href="/" class="btn btn-primary">Return</a>

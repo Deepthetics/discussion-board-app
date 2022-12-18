@@ -10,11 +10,15 @@ You are not logged in. You can login <a href="/login">here</a>.
 {% endif %}
 <hr>
 <h2>Topics</h2>
-{% for topic in topics %}
-<a href="/topic/{{ topic.id }}/{{ topic.title }}">{{ topic.title }}</a>
 <br>
-Threads: {{ topic.thread_count }}
-<hr>
+{% for topic in topics %}
+<div class="card bg-light">
+  <div class="card-body">
+    <h5><a href="/topic/{{ topic.id }}/{{ topic.title }}">{{ topic.title }}</a></h5>
+    <p></p>
+    {{ topic.thread_count }} threads
+  </div>
+</div>
 {% endfor %}
 {% if session.role == 2 %}
 <br>
