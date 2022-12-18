@@ -43,4 +43,5 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 - käyttäjälle ei tulosteta ilmoituksia onnistuneista operaatioista
 - käyttäjältä/ylläpitäjältä ei varmisteta poisto-operaatioiden yhteydessä, että haluavatko he todella toteuttaa poiston
 - ilmoitukset epäonnistuneista operaatioista voitaisiin tulostaa samalle sivulle ilman uudelleenohjausta
+- uuden viestiketjun luonnin jälkeen ohjataan keskustelualueen sivulle, vaikka loogisempaa voisi olla ohjata uuden viestiketjun sivulle
 - ulkoasu
