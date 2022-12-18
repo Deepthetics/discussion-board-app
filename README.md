@@ -2,6 +2,10 @@
 
 ## Installation
 
+Installation instructions assume that Python and PostgreSQL are installed on the device. 
+
+### Instructions:
+
 1. Clone the repository to your local device.
 
 2. Create virtual environment for the program:
@@ -22,7 +26,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-5. Start the program:
+5. Initialize database:
+
+```bash
+psql (database name) < schema.sql
+```
+
+6. Start the program:
 
 ```bash
 flask run
