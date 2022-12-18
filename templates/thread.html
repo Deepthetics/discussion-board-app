@@ -1,16 +1,18 @@
 {% extends "layout.html" %}
 {% block title %}Thread{% endblock %}
 {% block content %}
-<a href="/create_message">Create new message</a>
-<hr>
+<a href="/create_message" class="btn btn-primary">Create new message</a>
+<br>
+<br>
 <h2>{{ thread_title }}</h2>
 {% if session.username == session.thread_username %}
-<a href="/edit_thread/{{ thread_id}}/{{ thread_title }}">Edit</a>
+<a href="/edit_thread/{{ thread_id}}/{{ thread_title }}" class="btn btn-primary btn-sm">Edit</a>
 {% endif %}
 {% if session.username == session.thread_username or session.role == 2 %}
-<a href="/remove_thread/{{ thread_id }}">Remove</a>
+<a href="/remove_thread/{{ thread_id }}" class="btn btn-primary btn-sm">Remove</a>
+<br>
 {% endif %}
-<h3>Messages</h3>
+<br>
 {% for message, time in zip(messages, times) %}
 Content: {{ message.content }}
 <br>
@@ -19,12 +21,13 @@ Created at: {{ "{year}-{month}-{day} ".format(year=message.created_at.year, mont
 Created by: {{ message.username }}
 <br>
 {% if session.username == message.username %}
-<a href="/edit_message/{{ message.id }}/{{ message.content }}/{{ message.username }}">Edit</a>
+<a href="/edit_message/{{ message.id }}/{{ message.content }}/{{ message.username }}" class="btn btn-primary btn-sm">Edit</a>
 {% endif %}
 {% if session.username == message.username or session.role == 2 %}
-<a href="/remove_message/{{ message.id }}/{{ message.username }}">Remove</a>
+<a href="/remove_message/{{ message.id }}/{{ message.username }}" class="btn btn-primary btn-sm">Remove</a>
 {% endif %}
 <hr>
 {% endfor %}
-<a href="/topic/{{ session.topic_id }}/{{ session.topic_title }}">Go back</a>
+<br>
+<a href="/topic/{{ session.topic_id }}/{{ session.topic_title }}" class="btn btn-primary">Return</a>
 {% endblock %}

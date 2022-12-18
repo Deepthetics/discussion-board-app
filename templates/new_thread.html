@@ -2,13 +2,23 @@
 {% block title %}Create new thread{% endblock %}
 {% block content %}
 <h2>Create new thread</h2>
+<br>
 <form action="/create_thread" method="POST">
-Title: <br><input type="text" name="title">
-<p>
-Message: <br><textarea name="message_content" rows="10", cols="50"></textarea>
-<p>
-<input type="submit" value="Create new">
-<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+  <div class="mb-3 row">
+    <label for="input_title">Title</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="input_title" name="title">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="input_message">Message</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" id="input_message" rows="10" name="message_content"></textarea>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Create new">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
-<a href="/topic/{{ session.topic_id }}/{{ session.topic_title }}">Go back</a>
+<br>
+<a href="/topic/{{ session.topic_id }}/{{ session.topic_title }}" class="btn btn-primary">Return</a>
 {% endblock %}

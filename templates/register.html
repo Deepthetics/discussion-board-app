@@ -2,21 +2,37 @@
 {% block title %}Register{% endblock %}
 {% block content %}
 <h2>Register</h2>
+<br>
 <form action="/register" method="POST">
-Username: <br><input type="text" name="username">
-<p>
-Password: <br><input type="password" name="password1">
-<p>
-Confirm password: <br><input type="password" name="password2">
-<p>
-User role:
-<select name="role">
-<option value=1> basic user
-<option value=2> admin
-</select>
-<p>
-<input type="submit" value="Register">
+  <div class="mb-3 row">
+    <label for="input_email">Username</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="input_email" name="username">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="input_password">Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" id="input_password" name="password1">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="input_confirm_password">Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" id="input_confirm_password" name="password2">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="input_confirm_password">User role</label>
+    <div class="col-sm-2">
+      <select class="form-select" name="role">
+        <option value="1">basic user</option>
+        <option value="2">admin</option>
+      </select>
+    </div>
+  </div>  
+  <input type="submit" class="btn btn-primary" value="Register">
 </form>
-<p>
-<a href="/login">Back to login</a>
+<br>
+<a href="/login" class="btn btn-primary">Return</a>
 {% endblock %}

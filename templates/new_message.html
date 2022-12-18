@@ -2,11 +2,17 @@
 {% block title %}Create new message{% endblock %}
 {% block content %}
 <h2>Create new message</h2>
+<br>
 <form action="/create_message" method="POST">
-Message: <br><textarea name="content" rows="10", cols="50"></textarea>
-<p>
-<input type="submit" value="Create new">
-<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+  <div class="mb-3 row">
+    <label for="input_message">Message</label>
+    <div class="col-sm-6">
+      <textarea class="form-control" id="input_message" rows="10" name="content"></textarea>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Create new">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
-<a href="/thread/{{ session.thread_id }}/{{ session.thread_title }}">Go back</a>
+<br>
+<a href="/thread/{{ session.thread_id }}/{{ session.thread_title }}/{{ session.thread_username }}" class="btn btn-primary">Return</a>
 {% endblock %}

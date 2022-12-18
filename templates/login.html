@@ -2,14 +2,24 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 <h2>Login</h2>
+<br>
 <form action="/login" method="POST">
-Username: <br><input type="text" name="username">
-<p>
-Password: <br><input type="password" name="password">
-<p>
-<input type="submit" value="Login">
+  <div class="mb-3 row">
+    <label for="input_email">Username</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="input_email" name="username">
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="input_password">Password</label>
+    <div class="col-sm-6">
+      <input type="password" class="form-control" id="input_password" name="password">
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Login">
 </form>
-If you do not have an account, you can register <a href="/register">here</a>.
-<p>
-<a href="/">Back to front page</a>
+<p></p>
+<p>If you do not have an account, you can register <a href="/register">here</a>.</p>
+<br>
+<a href="/" class="btn btn-primary">Return</a>
 {% endblock %}

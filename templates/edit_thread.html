@@ -2,10 +2,17 @@
 {% block title %}Edit thread{% endblock %}
 {% block content %}
 <h2>Edit thread</h2>
+<br>
 <form action="/edit_thread/{{ thread_id }}/{{ thread_title }}" method="POST">
-Title: <br><input type="text" name="title" value="{{ thread_title }}">
-<p>
-<input type="submit" value="Save changes">
-<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+  <div class="mb-3 row">
+    <label for="input_title">Title</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="input_title" name="title" value="{{ thread_title }}">
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Save changes">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
+<br>
+<a href="/thread/{{ session.thread_id }}/{{ session.thread_title }}/{{ session.thread_username }}" class="btn btn-primary">Return</a>
 {% endblock %}

@@ -3,8 +3,8 @@
 {% block content %}
 {% if session.user_id %}
 You are logged in as {{ session.username }}.
-<p>
-<a href="/logout">Logout</a>
+<p></p>
+<a href="/logout" class="btn btn-primary">Logout</a>
 {% else %}
 You are not logged in. You can login <a href="/login">here</a>.
 {% endif %}
@@ -18,18 +18,28 @@ Threads: {{ topic.thread_count }}
 {% endfor %}
 {% if session.role == 2 %}
 <br>
-<h2>Admin tools</h2>
-<h3>Add new topic</h3>
+<h3>Admin tools</h3>
+<br>
+<h4>Add new topic</h4>
 <form action="/add_topic" method="POST">
-Title: <br><input type="text" name="title">
-<p>
-<input type="submit" value="Add new">
+  <div class="mb-3 row">
+    <label for="input_title">Title</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="input_title" name="title">
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Add new">
 </form>
-<h3>Remove topic</h3>
+<br>
+<h4>Remove topic</h4>
 <form action="/remove_topic" method="POST">
-Title: <br><input type="text" name="title">
-<p>
-<input type="submit" value="Remove">
+  <div class="mb-3 row">
+    <label for="input_title">Title</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="input_title" name="title">
+    </div>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Remove">
 </form>
 {% endif %}
 {% endblock %}
