@@ -32,10 +32,14 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 
 ## Sovelluksen jatkokehitysideat
 
-Tässä lueteltuja toimintoja toteutetaan ajan salliessa, kun keskeiset toiminnot on toteutettu.
-
 - käyttäjä näkee keskustelualueen yhteydessä viimeksi aktiivisen viestiketjun sekä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
 - käyttäjä näkee viestiketjun yhteydessä sinne viimeksi kirjoitetun viestin kirjoittajan/ajankohdan
 - käyttäjä voi tykätä muiden käyttäjien viesteistä
 - käyttäjä voi lähettää yksityisviestejä muille käyttäjille
 - ylläpitäjä voi poistaa käyttäjiä
+
+## Tiedostetut bugit/puutteet/kehityskohdat
+- viestiketju ei poistu automaattisesti, jos siitä poistetaan kaikki viestit
+- käyttäjälle ei tulosteta ilmoituksia onnistuneista operaatioista
+- ilmoitukset epäonnistuneista operaatioista voitaisiin tulostaa samalle sivulle ilman uudelleenohjausta
+- ulkoasu
