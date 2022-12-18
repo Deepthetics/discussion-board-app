@@ -41,5 +41,6 @@ Sovelluksella on kahdenlaisia käyttäjiä:
 ## Tiedostetut bugit/puutteet/kehityskohdat
 - viestiketju ei poistu automaattisesti, jos siitä poistetaan kaikki viestit
 - käyttäjälle ei tulosteta ilmoituksia onnistuneista operaatioista
+- käyttäjältä/ylläpitäjältä ei varmisteta poisto-operaatioiden yhteydessä, että haluavatko he todella toteuttaa poiston
 - ilmoitukset epäonnistuneista operaatioista voitaisiin tulostaa samalle sivulle ilman uudelleenohjausta
 - ulkoasu
